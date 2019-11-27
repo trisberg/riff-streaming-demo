@@ -9,7 +9,7 @@ Have the following installed:
 - [kapp](https://github.com/k14s/kapp#kapp) version used v0.15.0
 - [ytt](https://github.com/k14s/ytt#ytt-yaml-templating-tool) version used v0.22.0
 
-# Kubernetes cluster
+## Kubernetes cluster
 
 Follow the riff instructions for:
 
