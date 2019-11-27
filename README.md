@@ -23,15 +23,22 @@ Clone this repo:
 
 ```
 git clone https://github.com/trisberg/riff-streaming-demo.git
+cd riff-streaming-demo
 ```
 
 ## Install riff
 
 Install riff and all dependent packages including cert-manager, kpack, keda, riff-build, istio and core, knative and serving runtimes:
 
+For a cluster that supports LoadBalancer use:
+
 ```
-cd riff-streaming-demo
 ./riff-kapp-install.sh
+```
+
+For a cluster like "Minikube" or "Docker for Mac" that doesn't support LoadBalancer use:
+```
+./riff-kapp-install.sh --node-port
 ```
 
 ## Install kafka
@@ -93,6 +100,15 @@ kubectl exec dev-utils -n default -- publish default_in -n default --content-typ
 
 ```
 cat result.txt
+```
+
+## Experimental: use the native image for the streamning-processor
+
+Update the configmap for the streaming-processor before creating the processor:
+
+```
+kubectl patch configmap/riff-streaming-processor -n riff-system --type merge \
+  -p '{"data":{"processorImage": "index.docker.io/trisberg/streaming-processor-native@sha256:ea96f38f6e86d0fbcc963c464ea7b657948da446ec55576d782896c776f590ba"}}'
 ```
 
 ## Teardown demo
