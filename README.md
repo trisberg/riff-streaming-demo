@@ -102,7 +102,7 @@ kubectl exec dev-utils -n default -- publish default_in -n default --content-typ
 cat result.txt
 ```
 
-## Experimental: use the native image for the streamning-processor
+## Experimental: use the native image for the streaming-processor
 
 Update the configmap for the streaming-processor before creating the processor:
 
