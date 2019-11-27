@@ -132,6 +132,7 @@ riff streaming processor delete hello
 riff streaming stream delete in
 riff streaming stream delete out
 riff function delete hello
+riff streaming kafka-provider delete franz
 ```
 
 ## Teardown kafka
