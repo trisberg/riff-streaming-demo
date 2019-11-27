@@ -17,6 +17,8 @@ Follow the riff instructions for:
 - [Minikube](https://projectriff.io/docs/v0.4/getting-started/minikube)
 - [Docker for Mac](https://projectriff.io/docs/v0.4/getting-started/docker-for-mac)
 
+> NOTE: kapp can't install keda on a Kubernetes cluster running version 1.16 so we need to force the Kubernetes version to be 1.14 or 1.15
+
 ## Clone the demo repo
 
 Clone this repo:
@@ -124,6 +126,12 @@ riff function delete hello
 
 ```
 kapp delete -y -n apps -a kafka
+```
+
+## Teardown dev-utils
+
+```
+kubectl delete pod -n default dev-utils
 ```
 
 ## Teardown riff
