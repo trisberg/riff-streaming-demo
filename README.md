@@ -9,6 +9,28 @@ Have the following installed:
 - [kapp](https://github.com/k14s/kapp#kapp) version used v0.15.0
 - [ytt](https://github.com/k14s/ytt#ytt-yaml-templating-tool) version used v0.22.0
 
+## Install riff including
+
+You need the latest [riff CLI](https://github.com/projectriff/cli/). You can run the following and then place the executable on your path.
+
+For macOS:
+
+```
+wget https://storage.googleapis.com/projectriff/riff-cli/releases/v0.5.0-snapshot/riff-darwin-amd64.tgz
+tar xvzf riff-darwin-amd64.tgz
+rm riff-darwin-amd64.tgz
+sudo mv ./riff /usr/local/bin/riff
+```
+
+for Linux:
+
+```
+wget https://storage.googleapis.com/projectriff/riff-cli/releases/v0.5.0-snapshot/riff-linux-amd64.tgz
+tar xvzf riff-linux-amd64.tgz
+rm riff-linux-amd64.tgz
+sudo mv ./riff /usr/local/bin/riff
+```
+
 ## Kubernetes cluster
 
 Follow the riff instructions for:
