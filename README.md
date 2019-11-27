@@ -119,6 +119,12 @@ kubectl patch configmap/riff-streaming-processor -n riff-system --type merge \
   -p '{"data":{"processorImage": "index.docker.io/trisberg/streaming-processor-native@sha256:ea96f38f6e86d0fbcc963c464ea7b657948da446ec55576d782896c776f590ba"}}'
 ```
 
+Once the processor scales up from 0 you can check the startup time in the logs:
+
+```
+kubectl logs -l streaming.projectriff.io/processor=hello -c processor
+```
+
 ## Teardown demo
 
 ```
