@@ -43,6 +43,12 @@ For a cluster like "Minikube" or "Docker for Mac" that doesn't support LoadBalan
 ./riff-kapp-install.sh --node-port
 ```
 
+## Apply docker credentials
+
+```
+riff credentials apply docker-push --docker-hub $USER --set-default-image-prefix
+```
+
 ## Install kafka
 
 ```
