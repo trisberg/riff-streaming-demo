@@ -93,15 +93,15 @@ kubectl run dev-utils --image=projectriff/dev-utils:latest --generator=run-pod/v
 (open a new terminal window)
 
 ```
-kubectl exec dev-utils -n default -- subscribe default_out -n default --payload-as-string > result.txt
+kubectl exec dev-utils -n default -- subscribe out -n default --payload-as-string > result.txt
 ```
 
 ## Publish a few messages on the in stream
 
 ```
-kubectl exec dev-utils -n default -- publish default_in -n default --content-type "text/plain" --payload "riff #1"
-kubectl exec dev-utils -n default -- publish default_in -n default --content-type "text/plain" --payload "riff #2"
-kubectl exec dev-utils -n default -- publish default_in -n default --content-type "text/plain" --payload "riff #3"
+kubectl exec dev-utils -n default -- publish in -n default --content-type "text/plain" --payload "riff #1"
+kubectl exec dev-utils -n default -- publish in -n default --content-type "text/plain" --payload "riff #2"
+kubectl exec dev-utils -n default -- publish in -n default --content-type "text/plain" --payload "riff #3"
 ```
 
 ## Check the results
