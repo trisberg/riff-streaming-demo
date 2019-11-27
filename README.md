@@ -144,6 +144,8 @@ kapp delete -y -n apps -a kafka
 
 ```
 kubectl delete pod -n default dev-utils
+kubectl delete rolebinding dev-utils --namespace default
+kubectl delete serviceaccount dev-utils --namespace default
 ```
 
 ## Teardown riff
