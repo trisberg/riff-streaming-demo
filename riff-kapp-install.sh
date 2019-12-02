@@ -5,6 +5,19 @@ set -x
 riff_version=0.5.0-snapshot
 kubectl create ns apps || true
 
+# check for '--node-port'
+# check for '--node-port'
+if [ ${1-Missing} = "Missing" ]; then
+  type="LoadBalancer"
+else
+  if [ ${1} = "--node-port" ]; then
+    type="NodePort"
+  else
+    echo "Invalid flag: $1"
+	exit 1
+  fi
+fi
+
 # build
 kapp deploy -y -n apps -a cert-manager -f https://storage.googleapis.com/projectriff/charts/uncharted/${riff_version}/cert-manager.yaml
 kapp deploy -y -n apps -a kpack -f https://storage.googleapis.com/projectriff/charts/uncharted/${riff_version}/kpack.yaml
@@ -12,7 +25,7 @@ kapp deploy -y -n apps -a riff-builders -f https://storage.googleapis.com/projec
 kapp deploy -y -n apps -a riff-build -f https://storage.googleapis.com/projectriff/charts/uncharted/${riff_version}/riff-build.yaml
 
 # istio -- use '--node-port' for clusters that don't support LoadBalancer 
-if [ "$1" = "--node-port" ]; then
+if [ $type = "NodePort" ]; then
   echo "Installing Istio with NodePort"
   ytt -f https://storage.googleapis.com/projectriff/charts/uncharted/${riff_version}/istio.yaml -f https://storage.googleapis.com/projectriff/charts/overlays/service-nodeport.yaml --file-mark istio.yaml:type=yaml-plain | kapp deploy -n apps -a istio -f - -y
 else
